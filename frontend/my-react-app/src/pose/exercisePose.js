@@ -198,5 +198,7 @@ export function startExerciseSession(exercise, onUpdate, onComplete) {
     camera.stop();
     video.remove();
     canvas.remove();
+    let repCount = 0;
+
   }
 }
