@@ -2,16 +2,9 @@ import { useState } from "react";
 import { startExerciseSession } from "../pose/exercisePoseLogic";
 import { exercisesByWeek } from "../data/exercises";
 
-export default function ExerciseSession() {
-  const injury = "knee";
-  const intensity = "low";
-  const week = "week2";
+export default function ExerciseSession({ injury, intensity, week }) {
 
-  // 📌 Week 2 = Week 1 exercises + new ones
-  const exercises = [
-    ...exercisesByWeek[injury][intensity]["week1"],
-    ...exercisesByWeek[injury][intensity]["week2"],
-  ];
+  const exercises = getExercisesUpToWeek(injury, intensity, week);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showRest, setShowRest] = useState(false);
@@ -22,6 +15,7 @@ export default function ExerciseSession() {
       exercises[currentIndex],
       (data) => setLiveData(data),
       () => {
+        setLiveData(null);
         setShowRest(true);
 
         setTimeout(() => {
@@ -32,30 +26,48 @@ export default function ExerciseSession() {
     );
   }
 
-  // Auto-start next exercise
   if (currentIndex < exercises.length && !showRest && !liveData) {
     startExercise();
   }
 
   return (
     <div>
-      <h2>Exercise Session</h2>
+      <h2>{`Physio Session – ${week}`}</h2>
 
       <div id="camera-container" />
 
       {showRest && <h3>Rest for 1 minute</h3>}
 
       {liveData && (
-        <div>
+        <>
+          <p>Exercise: {exercises[currentIndex].name}</p>
           <p>Angle: {liveData.angle.toFixed(1)}°</p>
           <p>Reps: {liveData.reps}</p>
           <p>{liveData.feedback}</p>
-        </div>
+        </>
       )}
 
       {currentIndex >= exercises.length && (
-        <h3>All exercises complete 🎉</h3>
+        <h3>Session complete 🎉</h3>
       )}
     </div>
   );
+}
+
+
+
+function getExercisesUpToWeek(injury, intensity, week) {
+  const weekNumber = parseInt(week.replace("week", ""));
+  const allWeeks = exercisesByWeek[injury][intensity];
+
+  let selected = [];
+
+  for (let i = 1; i <= weekNumber; i++) {
+    const wk = `week${i}`;
+    if (allWeeks[wk]) {
+      selected.push(...allWeeks[wk]);
+    }
+  }
+
+  return selected;
 }

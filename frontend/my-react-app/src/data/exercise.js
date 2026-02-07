@@ -4,25 +4,36 @@ export const exercisesByWeek = {
       week1: [
         {
           name: "Quad Set",
-          jointAngle: {
-            points: ["hip", "knee", "ankle"],
-            angleRange: { min: 10, max: 25 },
+          jointAngles: {
+            knee: { min: 0, max: 20 }
           },
-          speedRange: { min: 3, max: 10 },
           reps: 10,
-        },
+          speed: "slow"
+        }
       ],
+
       week2: [
         {
           name: "Straight Leg Raise",
-          jointAngle: {
-            points: ["hip", "knee", "ankle"],
-            angleRange: { min: 35, max: 55 },
+          jointAngles: {
+            hip: { min: 30, max: 50 },
+            knee: { min: 160, max: 180 }
           },
-          speedRange: { min: 5, max: 25 },
           reps: 12,
-        },
+          speed: "medium"
+        }
       ],
-    },
-  },
+
+      week3: [
+        {
+          name: "Seated Knee Extension",
+          jointAngles: {
+            knee: { min: 30, max: 70 }
+          },
+          reps: 15,
+          speed: "medium"
+        }
+      ]
+    }
+  }
 };
