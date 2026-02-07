@@ -25,8 +25,8 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon, HamburgerIcon, ShoppingCartIcon } from '@chakra-ui/icons';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
-import { useUser } from '../context/UserContext';
+import { useCart } from '../.vscode/context/CartContext';
+import { useUser } from '../.vscode/context/UserContext';
 
 const Header = () => {
   const navigate = useNavigate();
