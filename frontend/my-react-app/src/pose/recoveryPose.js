@@ -8,6 +8,10 @@ export function startRecoveryTest(onComplete) {
   // Create canvas to draw video + landmarks
   const canvasElement = document.createElement("canvas");
   const canvasCtx = canvasElement.getContext("2d");
+  //defining camera size
+  canvasElement.width = 640;
+  canvasElement.height = 480;
+
 
   // Add video + canvas to page (assume a container exists)
   document.getElementById("camera-container").appendChild(videoElement);
@@ -75,7 +79,12 @@ export function startRecoveryTest(onComplete) {
     width: 640,
     height: 480,
   });
-  camera.start();
+  //camera.start();
+  //gives an error if the user doesn't provide access to the camera
+  camera.start().catch(err => {
+  console.error("Camera failed to start:", err);
+  });
+
 
   // Stop test after 8 seconds and return max angle
   setTimeout(() => {
