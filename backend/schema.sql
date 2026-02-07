@@ -1,0 +1,48 @@
+-- USERS
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+-- INJURY DETAILS
+CREATE TABLE injuries (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  injury_type TEXT,
+  intensity TEXT,
+  start_week INTEGER,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- RECOVERY RANGE OF MOTION TESTS
+CREATE TABLE recovery_tests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  joint TEXT,
+  max_angle REAL,
+  recommended_week INTEGER,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- EXERCISE SESSIONS
+CREATE TABLE exercise_sessions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  week INTEGER,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- INDIVIDUAL EXERCISE LOGS
+CREATE TABLE exercise_logs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id INTEGER,
+  exercise_name TEXT,
+  reps_completed INTEGER,
+  reps_target INTEGER,
+  success_rate REAL,
+  avg_angle REAL,
+  feedback TEXT,
+  FOREIGN KEY (session_id) REFERENCES exercise_sessions(id)
+);
