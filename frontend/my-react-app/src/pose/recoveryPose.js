@@ -91,5 +91,5 @@ export function startRecoveryTest(onComplete) {
     camera.stop();
     container.innerHTML = "";
     onComplete(maxAngle);
-  }, 8000);
+  }, 30000);
 }

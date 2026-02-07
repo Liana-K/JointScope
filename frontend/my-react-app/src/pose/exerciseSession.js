@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { startExerciseSession } from "../pose/exercisePoseLogic";
 import { exercisesByWeek } from "../data/exercises";
 
@@ -26,9 +26,11 @@ export default function ExerciseSession({ injury, intensity, week }) {
     );
   }
 
-  if (currentIndex < exercises.length && !showRest && !liveData) {
-    startExercise();
-  }
+  useEffect(() => {
+    if (currentIndex < exercises.length && !showRest && !liveData) {
+      startExercise();
+    }
+  }, [currentIndex, showRest, liveData]);
 
   return (
     <div>
