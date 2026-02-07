@@ -11,7 +11,7 @@ EXPECTED_ROM = {
         "week4": {"min": 55, "max": 80},
     }
 }
-
+"""
 @app.route("/recommend-week", methods=["POST"])
 def recommend_week():
     data = request.json
@@ -36,10 +36,10 @@ def recommend_week():
         "recommendedWeek": recommended,
         "actualROM": actual_rom,
         "reportedWeek": reported_week
-    })
+    })"""
 
-if __name__ == "__main__":
-    app.run(debug=True)
+#if __name__ == "__main__":
+#    app.run(debug=True)
 
 
 #database handeling 
@@ -89,7 +89,9 @@ def save_session():
     user_id = data["user_id"]
     week = data["week"]
 
-    query_db(
+
+
+    """query_db(
         "INSERT INTO exercise_sessions (user_id, week) VALUES (?, ?)",
         (user_id, week)
     )
@@ -100,11 +102,11 @@ def save_exercise_log():
     data = request.json
 
     query_db(
-        """
+        "
         INSERT INTO exercise_logs
         (session_id, exercise_name, reps_completed, reps_target, success_rate, avg_angle, feedback)
         VALUES (?, ?, ?, ?, ?, ?, ?)
-        """,
+        ",
         (
             data["session_id"],
             data["exercise_name"],
@@ -117,3 +119,4 @@ def save_exercise_log():
     )
 
     return jsonify({ "status": "logged" })
+    """

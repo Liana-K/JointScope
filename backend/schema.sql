@@ -26,7 +26,7 @@ CREATE TABLE recovery_tests (
 );
 
 -- EXERCISE SESSIONS
-CREATE TABLE exercise_sessions (
+CREATE TABLE exercise (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER,
   week INTEGER,
@@ -34,15 +34,3 @@ CREATE TABLE exercise_sessions (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- INDIVIDUAL EXERCISE LOGS
-CREATE TABLE exercise_logs (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  session_id INTEGER,
-  exercise_name TEXT,
-  reps_completed INTEGER,
-  reps_target INTEGER,
-  success_rate REAL,
-  avg_angle REAL,
-  feedback TEXT,
-  FOREIGN KEY (session_id) REFERENCES exercise_sessions(id)
-);
