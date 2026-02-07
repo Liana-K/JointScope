@@ -14,6 +14,14 @@ const exercisesByWeek = {
   ]
 };
 
+
+function getWeekFromAngle(angle) {
+  if (angle < 30) return 1;
+  if (angle < 60) return 2;
+  return 3;
+}
+
+
 function getExercises(week) {
   const weekCount = Math.min(week, 3); // cap to max week 3
 
