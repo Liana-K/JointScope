@@ -1,11 +1,11 @@
 // recoveryPose.js
 export function startRecoveryTest(onComplete) {
-  // 1️⃣ Create video element for webcam
+  // Create video element for webcam
   const videoElement = document.createElement("video");
   videoElement.autoplay = true;
   videoElement.playsInline = true;
 
-  // 2️⃣ Create canvas to draw video + landmarks
+  // Create canvas to draw video + landmarks
   const canvasElement = document.createElement("canvas");
   const canvasCtx = canvasElement.getContext("2d");
 
@@ -17,7 +17,7 @@ export function startRecoveryTest(onComplete) {
   let maxAngle = 0;
   let testing = true;
 
-  // 3️⃣ Helper function: calculate angle between 3 points
+  // Helper function: calculate angle between 3 points
   function calculateAngle(a, b, c) {
     const radians =
       Math.atan2(c.y - b.y, c.x - b.x) -
@@ -27,7 +27,7 @@ export function startRecoveryTest(onComplete) {
     return angle;
   }
 
-  // 4️⃣ Initialize MediaPipe Pose
+  // Initialize MediaPipe Pose
   const pose = new Pose({
     locateFile: (file) =>
       `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
@@ -40,7 +40,7 @@ export function startRecoveryTest(onComplete) {
     minTrackingConfidence: 0.5,
   });
 
-  // 5️⃣ When pose results are ready
+  // When pose results are ready
   pose.onResults((results) => {
     if (!testing) return;
 
@@ -67,7 +67,7 @@ export function startRecoveryTest(onComplete) {
     }
   });
 
-  // 6️⃣ Setup camera to send frames to MediaPipe
+  // Setup camera to send frames to MediaPipe
   const camera = new Camera(videoElement, {
     onFrame: async () => {
       await pose.send({ image: videoElement });
@@ -77,7 +77,7 @@ export function startRecoveryTest(onComplete) {
   });
   camera.start();
 
-  // 7️⃣ Stop test after 8 seconds and return max angle
+  // Stop test after 8 seconds and return max angle
   setTimeout(() => {
     testing = false;
     onComplete(maxAngle);  // sends max ROM to caller
