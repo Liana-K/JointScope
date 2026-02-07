@@ -19,9 +19,9 @@ export function startRecoveryTest(onComplete) {
   const canvasElement = document.createElement("canvas");
   const canvasCtx = canvasElement.getContext("2d");
   
-  //const container = document.getElementById("camera-container");
-  //container.appendChild(video);
-  //container.appendChild(canvas);
+  const container = document.getElementById("camera-container");
+  container.appendChild(video);
+  container.appendChild(canvas);
 
 
   //defining camera size
@@ -90,10 +90,10 @@ export function startRecoveryTest(onComplete) {
     }
   });
 
-   /* onUpdate({
+    onUpdate({
       currentAngle: angle,
       maxAngle,
-    });*/
+    })
 
   // Setup camera to send frames to MediaPipe
   const camera = new Camera(videoElement, {
@@ -117,10 +117,12 @@ export function startRecoveryTest(onComplete) {
     videoElement.remove();
     canvasElement.remove();
   }, 8000);
-}
 
-  /*function cleanup() {
+  function cleanup() {
     camera.stop();
     video.remove();
     canvas.remove();
-  }*/
+  }
+}
+
+  
