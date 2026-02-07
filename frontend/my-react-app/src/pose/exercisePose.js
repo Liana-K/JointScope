@@ -137,7 +137,7 @@ export function startExerciseSession(exercise, onUpdate, onComplete) {
       inTargetZone = true;
     }
   } else {
-    if (inTargetZone && angle < exercise.jointAngle.angleRange.min) {
+    if (inTargetZone && angle < exercise.jointAngle.angleRange.max) {
       repCount += 1;
       inTargetZone = false;
     }
@@ -212,6 +212,7 @@ export function startExerciseSession(exercise, onUpdate, onComplete) {
     catch {}
     video.remove();
     canvas.remove();
+    let repCount = 0;
   }
 }
 
