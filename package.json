@@ -1,0 +1,12 @@
+{
+  "name": "healz",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "cd frontend/my-react-app && npm run dev",
+    "build": "cd frontend/my-react-app && npm run build",
+    "lint": "cd frontend/my-react-app && npm run lint",
+    "preview": "cd frontend/my-react-app && npm run preview",
+    "install-all": "cd frontend/my-react-app && npm install"
+  }
+}
