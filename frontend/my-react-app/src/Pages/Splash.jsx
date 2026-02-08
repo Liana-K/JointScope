@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Logo from "../components/Logo";
+import Logo from "../Components/Logo";
 
 export default function Splash({ goTo }) {
   useEffect(() => {
