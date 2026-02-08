@@ -1,0 +1,11 @@
+.page {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-page {
+  background-color: var(--cyan-blue);
+}

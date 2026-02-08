@@ -1,16 +1,34 @@
 
 const exercisesByWeek = {
   week1: [
-    { name: "Quad Set", reps: 10 },
-    { name: "Heel Slides", reps: 12 },
+    { name: "Quad Set", 
+      reps: 10,
+      video: "https://youtu.be/5TUK4uT2nnw?si=feDRyW7Pqjb1wQL"
+    },
+
+    { name: "Heel Slides", 
+      reps: 12,
+      video: "https://youtu.be/A7fcobCVppc?si=K2KBi3dt5hvEnF31"
+    },
   ],
   week2: [
-    { name: "Straight Leg Raise", reps: 12 },
-    { name: "Mini Squats", reps: 10 },
+    { name: "Straight Leg Raise", 
+      reps: 12,
+      video: "https://youtu.be/U4L_6JEv9Jg?si=1nj4OcZK2ule-OwV"    
+    },
+    { name: "Mini Squats", 
+      reps: 10,
+      video: "https://youtu.be/0YAFlev6AYg?si=Bjds01XyO6owI3iF" },
   ],
   week3: [
-    { name: "Seated Knee Extension", reps: 15 },
-    { name: "Step-Ups", reps: 10 },
+    { name: "Seated Knee Extension", 
+      reps: 15,
+    video: "https://youtu.be/VuJZ6dqMf8M?si=ktv3WAC5AtF_kPoY"
+    },
+    { name: "Step-Ups",
+      reps: 10,
+    video: "https://youtu.be/wfhXnLILqdk?si=TbccXEm6Y26cWn36"
+    },
   ]
 };
 
