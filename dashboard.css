@@ -1,0 +1,78 @@
+/* Header spacing */
+.header {
+  padding: 16px 24px;
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+
+  padding: 24px;
+  height: calc(100vh - 120px);
+}
+
+/*logo size */
+.header-logo {
+  width: 130px;
+  height: auto;
+
+}
+/*header */
+.header {
+  height: 80px;
+  background-color: #92b7ff;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Shared card styling */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  text-decoration: none;
+  color: black;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+}
+
+/* History takes full left side */
+.history-card {
+  grid-row: 1 / span 2;
+}
+
+/* Doctor info */
+.doctor-card p {
+  margin: 6px 0;
+}
+
+/* Record test button */
+.record-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #1aa6a6;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.record-card:hover {
+  background-color: #168f8f;
+}

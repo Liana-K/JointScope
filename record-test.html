@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knee Recovery Test</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="recovery-test.css" />
+
+  <!-- MediaPipe CDN (REQUIRED) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html">
+      <img src="logo.png" alt="JointScope Logo" class="header-logo" />
+    </a>
+  </header>
+
+  <!-- Page content -->
+  <main class="recovery-container">
+    <h1>Knee Recovery Test</h1>
+
+    <!-- Camera -->
+    <div id="camera-container"></div>
+
+    <!-- Start test -->
+    <button id="start-test-btn">Start Test</button>
+
+    <!-- Angle readouts -->
+    <p id="current-angle" style="display: none;"></p>
+    <p id="max-angle" style="display: none;"></p>
+
+    <!-- Navigation buttons -->
+    <div class="nav-buttons">
+      <button onclick="window.location.href='dashboard.html'">
+        Back to Dashboard
+      </button>
+
+      <button onclick="window.location.href='exercise.html'">
+        View Exercises
+      </button>
+    </div>
+  </main>
+
+  <!-- Logic -->
+  <script type="module">
+    import { startRecoveryTest } from "./pose/recoveryPose.js";
+
+    const currentAngleEl = document.getElementById("current-angle");
+    const maxAngleEl = document.getElementById("max-angle");
+    const startBtn = document.getElementById("start-test-btn");
+
+    function startTest() {
+      startRecoveryTest(
+        // LIVE UPDATES
+        (live) => {
+          currentAngleEl.style.display = "block";
+          maxAngleEl.style.display = "block";
+
+          currentAngleEl.textContent =
+            `Current Angle: ${live.currentAngle.toFixed(1)}°`;
+          maxAngleEl.textContent =
+            `Max Angle: ${live.maxAngle.toFixed(1)}°`;
+        },
+
+        // FINAL RESULT
+        (finalMax) => {
+          alert(`Final Max Knee Angle: ${finalMax.toFixed(1)}°`);
+        }
+      );
+    }
+
+    startBtn.addEventListener("click", startTest);
+  </script>
+
+</body>
+</html>
