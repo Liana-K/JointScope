@@ -10,7 +10,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Splash />} />
+        <Route path="/Splash" element={<Splash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/record" element={<Record />} />
