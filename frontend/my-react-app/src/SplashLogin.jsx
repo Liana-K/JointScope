@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react"; 
+import Dashboard from "./Dashboard";
 import "./style.css";
 import logo from "./logo.png";
 
 export default function SplashLogin() {
-  const handleSubmit = (e) => {
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const handleSubmit = (e) => {
     e.preventDefault();
-    //replace with navigation logic (React Router, etc.)
-    window.location.href = "/dashboard";
+    setLoggedIn(true); //switches to dashboard
   };
+
+  //if the user is logged in (after submit),
+  if (loggedIn){
+    return <Dashboard /> //...move over to (render) the dashboard
+  }
 
   return (
     <div>

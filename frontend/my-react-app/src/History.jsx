@@ -5,12 +5,6 @@ import logo from "./logo.png";
 export default function History() {
   return (
     <div>
-      {/* Header */}
-      <header className="header">
-        <a href="/dashboard" className="logo-link">
-          <img src={logo} alt="JointScope Logo" className="header-logo" />
-        </a>
-      </header>
 
       {/*main content */}
       <main className="history-container">

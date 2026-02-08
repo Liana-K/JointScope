@@ -1,9 +1,19 @@
-import React from "react";
+
+import React, { useState } from "react";
+import History from "./History";
+import RecordTest from "./RecordTest";
 import "./dashboard.css";
 import logo from "./logo.png";
 
 export default function Dashboard() {
-  return (
+    const [view, setView] = useState("dashboard"); // "dashboard" or "recordTest"
+
+    // If Record Test is selected, render the RecordTest component
+    if (view === "recordTest") {
+    return <RecordTest />;
+    }
+
+    return (
     <div>
       {/* Header */}
       <header className="header">
@@ -17,9 +27,10 @@ export default function Dashboard() {
       {/* layout for dashboard*/}
       <main className="dashboard-grid">
         {/* left side of teh screen: History */}
-        <a href="/history" className="card history-card">
+        <a className="card history-card">
           <h2>History</h2>
           <p>View your past recovery tests and progress</p>
+          <History />
         </a>
 
         {/* top right of the screen: Doctor Info */}
@@ -31,9 +42,14 @@ export default function Dashboard() {
         </div>
 
         {/* bottom right of the screen: Record Test */}
-        <a href="/record-test" className="card record-card">
+        <div
+          className="card record-card"
+          onClick={() => setView("recordTest")} //switches to RecordTest
+          style={{ cursor: "pointer" }}
+        >
+
           <h2>Record Recovery Test</h2>
-        </a>
+          </div>
       </main>
     </div>
   );

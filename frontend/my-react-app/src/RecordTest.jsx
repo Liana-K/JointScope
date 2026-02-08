@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Exercise from "./Exercise";
 import "./recovery-test.css";
 import logo from "./logo.png";
 import { startRecoveryTest } from "./pose/recoveryPose";
