@@ -68,6 +68,14 @@ export function startRecoveryTest(onComplete) {
         const angle = calculateAngle(hip, knee, ankle);
         maxAngle = Math.max(maxAngle, angle);
 
+    
+      // 🔴 NEW: draw leg lines
+      drawLine(canvasCtx, hip, knee);
+      drawLine(canvasCtx, knee, ankle);
+
+      // 🔴 NEW: draw angle arc
+      drawAngleArc(canvasCtx, hip, knee, ankle);
+
         canvasCtx.fillStyle = "white";
         canvasCtx.font = "40px Arial";
         canvasCtx.fillText(`Knee Angle: ${angle.toFixed(1)}°`, 20, 40);
@@ -94,4 +102,33 @@ export function startRecoveryTest(onComplete) {
     container.innerHTML = "";
     onComplete(maxAngle);
   }, 30000);
+}
+
+function drawLine(ctx, p1, p2, color = "lime", width = 4) {
+  ctx.beginPath();
+  ctx.moveTo(p1.x * canvasElement.width, p1.y * canvasElement.height);
+  ctx.lineTo(p2.x * canvasElement.width, p2.y * canvasElement.height);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.stroke();
+}
+
+function drawAngleArc(ctx, hip, knee, ankle) {
+  const kx = knee.x * canvasElement.width;
+  const ky = knee.y * canvasElement.height;
+
+  const angle1 = Math.atan2(
+    hip.y - knee.y,
+    hip.x - knee.x
+  );
+  const angle2 = Math.atan2(
+    ankle.y - knee.y,
+    ankle.x - knee.x
+  );
+
+  ctx.beginPath();
+  ctx.arc(kx, ky, 30, angle1, angle2);
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 3;
+  ctx.stroke();
 }
