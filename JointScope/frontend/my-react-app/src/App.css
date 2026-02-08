@@ -1,0 +1,27 @@
+/* App Styles */
+#root {
+  min-height: 100vh;
+  cyan-blue: #50AAAF;
+  light-yellow: #EFDF96;
+  login-yellow: #FFED9D;
+  header-blue: #0B2D4A;
+  dark-text: #0B2D4A;
+  white: #FFFFFF;
+}
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
