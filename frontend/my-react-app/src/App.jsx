@@ -1,10 +1,9 @@
-import { useState } from "react";
 
-import Splash from "./Pages/Splash";
-import Login from "./Pages/Login";
-import Dashboard from "./Pages/Dashboard";
-import Record from "./Pages/Record";
-import History from "./Pages/History";
+import Splash from "./pages/Splash";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Record from "./pages/Record";
+import History from "./pages/History";
 
 export default function App() {
   const [page, setPage] = useState("splash");

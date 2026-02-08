@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Splash from "./pages/Splash";
+import Splash from "./Splash";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Record from "./pages/Record";

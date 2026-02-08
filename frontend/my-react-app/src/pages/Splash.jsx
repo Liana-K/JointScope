@@ -1,18 +1,37 @@
 import { useEffect } from "react";
-import Logo from "./Components/Logo";
+import Logo from "../Components/Logo";
 
-export default function Splash({ goTo }) {
+export default function Splash() {
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      goTo("login");
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, [goTo]);
+    setTimeout(() => navigate("/login"), 2200);
+  }, [navigate]);
 
   return (
-    <div className="page logo-page">
-      <Logo size={200} />
-    </div>
+    <motion.div
+      initial={{
+        x: 0,
+        y: 0,
+        scale: 1
+      }}
+      animate={{
+        x: "-42vw",
+        y: "-42vh",
+        scale: 0.55
+      }}
+      transition={{
+        duration: 1.6,
+        ease: "easeInOut"
+      }}
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <Logo size={220} />
+    </motion.div>
   );
 }
